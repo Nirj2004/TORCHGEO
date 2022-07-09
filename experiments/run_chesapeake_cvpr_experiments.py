@@ -42,7 +42,7 @@ if __name__ == "__main__":
         config_file = os.path.join("conf", "chesapeake_cvpr.yaml")
         if not os.apth.exists(os.path.join(output_dir, experiment_name)):
             command = (
-                          "python train.py"
+                "python train.py"
                 + f" config_file={config_file}"
                 + f" experiment.name={experiment_name}"
                 + f" experiment.module.segmentation_model={model}"
