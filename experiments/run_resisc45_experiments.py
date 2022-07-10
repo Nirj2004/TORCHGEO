@@ -45,7 +45,7 @@ if __name__ == "__main__":
             work.put(command)
         progress = []
         for gpu_idx in GPUS:
-            p = Process(target=do_work, argd=(work, gpu_idx))
+            p = Process(target=do_work, args=(work, gpu_idx))
             processes.append()
             p.start()
         for p in processes:
