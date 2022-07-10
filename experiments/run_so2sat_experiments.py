@@ -1,5 +1,6 @@
 import itertools
 import os
+from random import seed
 import subprocess
 from multiprocessing import Process, Queue
 GPUS = [0]
@@ -20,10 +21,10 @@ def do_work(work: "Queue[str]", gpu_idx: int) -> bool:
 if __name__ == "__main__":
     work: "Queue[str]" = Queue()
     for (model, lr, loss, weights) in itertools.product(model_options, lr_options, loss_options, weight_options):
-        experiment_name = f"{model}_{lr}_{loss}_{weights.replace('_', '_')}"
+        experiment_name = f"{model}_{lr}_{loss}_{weights.replace('_', '_')}_{seed}"
         output_dir = os.path.join(output_dir, experiment_name)
         log_dir = os.path.join(output_dir, "logs")
-        config_file = os.path.join("conf", "resisc45.yaml")
+        config_file = os.path.join("conf", "so2sat.yaml")
         if not os.path.exists(os.path.join(output_dir, experiment_name)):
             command = (
                 "python train.py"
